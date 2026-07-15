@@ -5,4 +5,5 @@ metadata:
 data:
   RabbitMq__Host: "rabbitmq"
   RabbitMq__Username: "guest"
+  PaymentSimulation__ForcedStatus: ""
   ASPNETCORE_URLS: "http://+:8080"

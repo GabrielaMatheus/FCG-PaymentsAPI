@@ -1,4 +1,5 @@
 using FiapCloudGames.PaymentsApi.Services;
+using Microsoft.Extensions.Configuration;
 using Xunit;
 
 namespace FiapCloudGames.PaymentsApi.Tests;
@@ -27,5 +28,21 @@ public class PaymentSimulatorTests
             var status = simulator.Process(Guid.NewGuid(), 100m);
             Assert.True(status is "Approved" or "Rejected");
         }
+    }
+
+    [Fact]
+    public void Process_deve_respeitar_status_forcado_para_demo()
+    {
+        var configuration = new ConfigurationBuilder()
+            .AddInMemoryCollection(new Dictionary<string, string?>
+            {
+                ["PaymentSimulation:ForcedStatus"] = "Approved"
+            })
+            .Build();
+        var simulator = new PaymentSimulator(configuration);
+
+        var status = simulator.Process(Guid.NewGuid(), 100m);
+
+        Assert.Equal("Approved", status);
     }
 }

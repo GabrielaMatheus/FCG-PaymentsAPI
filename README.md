@@ -22,6 +22,7 @@ logica acontece via mensageria (RabbitMQ + MassTransit).
 | `RabbitMq__Host` | Host do RabbitMQ | Nao (ConfigMap) |
 | `RabbitMq__Username` | Usuario do RabbitMQ | Nao (ConfigMap) |
 | `RabbitMq__Password` | Senha do RabbitMQ | Sim (Secret) |
+| `PaymentSimulation__ForcedStatus` | Forca `Approved` ou `Rejected` em demos; vazio mantem simulacao deterministica | Nao (ConfigMap) |
 
 ## Executando localmente
 
