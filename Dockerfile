@@ -3,7 +3,7 @@ WORKDIR /src
 COPY src/FiapCloudGames.PaymentsApi/FiapCloudGames.PaymentsApi.csproj src/FiapCloudGames.PaymentsApi/
 RUN dotnet restore src/FiapCloudGames.PaymentsApi/FiapCloudGames.PaymentsApi.csproj
 COPY src/FiapCloudGames.PaymentsApi/ src/FiapCloudGames.PaymentsApi/
-RUN dotnet publish src/FiapCloudGames.PaymentsApi/FiapCloudGames.PaymentsApi.csproj -c Release -o /app/publish --no-restore /p:UseAppHost=false
+RUN dotnet publish src/FiapCloudGames.PaymentsApi/FiapCloudGames.PaymentsApi.csproj -c Release -o /app/publish /p:UseAppHost=false
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 WORKDIR /app
